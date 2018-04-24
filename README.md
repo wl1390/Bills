@@ -16,7 +16,7 @@ The small program creates interaction among User and Store objects following the
 
 The program uses [Ant](http://ant.apache.org), a project managed by the Apache
 Foundation that interprets commands in an XML file to essentially run
-the Java command line tools. First download and install [Ant](https://ant.apache.org/bindownload.cgi) on local machine.
+the Java command line tools. First [download](https://ant.apache.org/bindownload.cgi) and [install](http://ant.apache.org/manual/install.html) on local machine.
 
 ### Command Line
 Enter the root directory containing `build.xml` and run the following command to compile codes. 
