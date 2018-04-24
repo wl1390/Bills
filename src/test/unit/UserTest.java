@@ -53,7 +53,6 @@ public class UserTest{
 		assertTrue(user.getAffiliate().contains(store));
 	}
 
-
 	@Test
 	public void testAddToBasketOne(){
 		Item hammer = new Item("Thor's hammer",100.0, Category.GROCERY);
@@ -97,4 +96,5 @@ public class UserTest{
 		user.addToBasket("helmet");
 		assertTrue(user.getSum()==70);
 	}
+	
 }

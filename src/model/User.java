@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class User{
+
 	private String name;
 	private Store employer;
 	private Store currentStore;
@@ -36,7 +37,7 @@ public class User{
 
 	public void enter(Store store){
 		this.currentStore = store;
-		//HERE WE COULD RETURN store.getSales() to the UI.
+		//Here we could return store.getSales() to the UI.
 	}
 
 	public void getEmployed(Store store){
@@ -47,6 +48,12 @@ public class User{
 		this.affiliated.add(store);
 	}
 
+
+	/*
+		Takes the name of the item as the argument;
+		Find this item in the current store's sale list;
+		Add it to user's basket dictionary with key being the current store;
+	*/
 	public void addToBasket(String itemName){
 		try{
 			if (basket.get(currentStore)==null){
@@ -59,15 +66,15 @@ public class User{
 					break;
 				}
 			}
-
-
-
 		}catch(NullPointerException e ){
-			throw e;
+			throw e; //.. if the user has not entered into any store
 		}
 
 	}
 
+	/*
+		check every store in the basket and get the total sum;
+	*/
 	public double getSum(){
 		double amount = 0;
 		if(basket != null){

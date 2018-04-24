@@ -1,9 +1,9 @@
 package model;
 
-
 import java.util.ArrayList;
 
 public class Store{
+
 	private String name;
 	private ArrayList<User> employee = new ArrayList<>();
 	private ArrayList<User> affiliation = new ArrayList<>();
@@ -13,9 +13,13 @@ public class Store{
 	public Store(String name){
 		this.name = name;
 	}
-	
+
 	public ArrayList<User> getEmployee(){
 		return this.employee;
+	}
+
+	public ArrayList<Item> getSales(){
+		return sales;
 	}
 
 	public void employ(User user){
@@ -36,10 +40,12 @@ public class Store{
 		this.sales.add(item);
 	}
 
-	public ArrayList<Item> getSales(){
-		return sales;
-	}
-
+	/*
+		Takes a user and a list of items as arguments;
+		Apply percentage based discount on each item;
+		Apply minus 5 per 100 discount in the end;
+		Returns the amount; 
+	*/
 	public double checkOut(User user, ArrayList<Item> items){
 		
 		double percent = getDiscountPercent(user);
@@ -48,13 +54,12 @@ public class Store{
 		for (Item item : items){
 			amount += (item.getCategory()==Category.GROCERY) ? item.getCost() : item.getCost()*percent;
 		}
-		System.out.println(amount);
 		
 		amount -= 5*Math.floor((amount/100));
 		return amount;
-
 	}
 
+	//Takes a user as the argument and returns how much discount user should get
 	public double getDiscountPercent(User user){
 		double percent = 1;
 		if (loyalty.contains(user)) percent = 0.95;
@@ -78,8 +83,6 @@ public class Store{
 		System.out.println();
 		
 	}
-
-
 
 
 }

@@ -1,6 +1,7 @@
 package model;
 
 public class Item{
+
 	private String name;
 	private double cost;
 	private Category category;
@@ -23,11 +24,9 @@ public class Item{
 		return this.category;
 	}
 
-
 	@Override
 	public String toString(){
 		return this.name + " " + this.cost + " " + this.category;
 	}
-
 
 }

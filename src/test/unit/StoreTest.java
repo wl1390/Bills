@@ -82,6 +82,6 @@ public class StoreTest{
 		assertTrue(store.checkOut(user1, items)==99);
 
 	}
-
+	
 
 }
