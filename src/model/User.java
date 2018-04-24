@@ -25,6 +25,10 @@ public class User{
 	public Store getEmployer(){
 		return this.employer;
 	}
+	
+	public ArrayList<Store> getAffiliate() {
+		return this.affiliated;
+	}
 
 	public Store getCurrentStore(){
 		return this.currentStore;
@@ -32,8 +36,7 @@ public class User{
 
 	public void enter(Store store){
 		this.currentStore = store;
-		if (currentStore!=null)
-			System.out.println(store.getSales());
+		//HERE WE COULD RETURN store.getSales() to the UI.
 	}
 
 	public void getEmployed(Store store){
@@ -58,10 +61,9 @@ public class User{
 			}
 
 
-		}catch(IndexOutOfBoundsException e){
-			System.err.println("No Such Item Exists");
+
 		}catch(NullPointerException e ){
-			System.err.println("Go Into the store first");
+			throw e;
 		}
 
 	}

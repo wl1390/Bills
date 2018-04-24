@@ -2,7 +2,6 @@ package model;
 
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class Store{
 	private String name;
@@ -13,6 +12,10 @@ public class Store{
 
 	public Store(String name){
 		this.name = name;
+	}
+	
+	public ArrayList<User> getEmployee(){
+		return this.employee;
 	}
 
 	public void employ(User user){
@@ -52,7 +55,7 @@ public class Store{
 
 	}
 
-	private double getDiscountPercent(User user){
+	public double getDiscountPercent(User user){
 		double percent = 1;
 		if (loyalty.contains(user)) percent = 0.95;
 		if (affiliation.contains(user)) percent = 0.9;
