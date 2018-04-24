@@ -4,7 +4,6 @@ import org.junit.Test;
 import org.junit.Before;
 
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertEquals;
 
 import model.Category;
@@ -35,10 +34,25 @@ public class UserTest{
 	}
 	
 	@Test
+	public void testComeAndGo(){
+		user.enter(store);
+		Store store2 = new Store("SHEILD store");
+		user.enter(store2);
+		assertEquals(user.getCurrentStore(),store2);
+	}
+	
+	@Test
 	public void testGetEmployed(){
 		user.getEmployed(store);
 		assertEquals(user.getEmployer(),store);
 	}
+	
+	@Test
+	public void testGetAlliated(){
+		user.getAffiliated(store);
+		assertTrue(user.getAffiliate().contains(store));
+	}
+
 
 	@Test
 	public void testAddToBasketOne(){
@@ -58,18 +72,20 @@ public class UserTest{
 		user.addToBasket("Thor's hammer");
 	}
 
-	@Test (expected = IndexOutOfBoundsException.class)
+	@Test
 	public void testAddToBasketWhenNothingOnSale(){
-		Item hammer = new Item("Thor's hammer",100.0, Category.GROCERY);
+		user.enter(store);
 		user.addToBasket("Thor's hammer");
+		assertTrue(user.getSum()==0);
 	}
 
 	@Test
 	public void testGetSumOne(){
 		Item hammer = new Item("Thor's hammer",100.0, Category.GROCERY);
 		store.putOnSale(hammer);
+		user.enter(store);
 		user.addToBasket("Thor's hammer");
-		assertEquals(user.getSum(),95);
+		assertTrue(user.getSum()==95);
 	}
 
 	@Test
@@ -77,13 +93,8 @@ public class UserTest{
 		Item helmet = new Item("helmet",100.0, Category.OTHER);
 		store.putOnSale(helmet);
 		store.employ(user);
+		user.enter(store);
 		user.addToBasket("helmet");
-		assertEquals(user.getSum(),70);
-
+		assertTrue(user.getSum()==70);
 	}
-	
-
-
-
-
 }
