@@ -18,10 +18,6 @@ public class Simulation{
 		fruitstore.putOnSale(new Item("apple",10,Category.GROCERY));
 		fruitstore.putOnSale(new Item("banana",10,Category.GROCERY));
 
-		System.out.println("Electronics store puts on sale lap and phone.");
-		estore.putOnSale(new Item("cellphone",1000,Category.ELECTRONICS));
-		estore.putOnSale(new Item("laptop",10000,Category.ELECTRONICS));
-		
 		System.out.println("Fruitlover becomes loyalty in fruit store.");
 		fruitstore.addLoyalty(fruitlover);
 
@@ -41,16 +37,20 @@ public class Simulation{
 		System.out.println("Fruitlover checks out and pays "+ fruitlover.getSum()+".");
 
 		System.out.println();
-		System.out.println("Electronics Store hires techguy");
+		System.out.println("Electronics store puts on sale lap and phone.");
+		estore.putOnSale(new Item("cellphone",1000,Category.ELECTRONICS));
+		estore.putOnSale(new Item("laptop",10000,Category.ELECTRONICS));
+		
+		System.out.println("Electronics Store hires techguy.");
 		estore.employ(techguy);
 
 		System.out.println("Techguy enters Electronics store.");
 		techguy.enter(estore);
 
-		System.out.println("Techguy adds a laptop into basket");
+		System.out.println("Techguy adds a laptop into basket.");
 		techguy.addToBasket("laptop");
 
-		System.out.println("Techguy is an employee and should pay only 7000.");
+		System.out.println("Techguy is an employee and should pay (10000*0.7) - 70*5 = 6650.");
 		System.out.println("Techguy pays "+techguy.getSum()+".");
 
 
